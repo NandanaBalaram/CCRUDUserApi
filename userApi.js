@@ -40,13 +40,17 @@ function createTable(data) {
 async function deleteUser() {
     try {
         let id = document.getElementById("id").value
+        if(id==="")
+        {
+            alert("enter a valid ID to delete")
+        }
         let response = await fetch(apiUrl + `/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
             }
         });
-        let data = await response.json()
+        
         document.querySelector("form").reset();
         alert("User Deleted")
         document.getElementById("tbody").innerHTML = "";
